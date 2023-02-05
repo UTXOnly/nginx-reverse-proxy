@@ -6,9 +6,14 @@ services:
       args:
         NOSTR_DOMAIN: ${NOSTR_DOMAIN}
         EMAIL: ${EMAIL}
+    environment:
+      - NOSTR_DOMAIN=${NOSTR_DOMAIN}
+      - PROXY_PASS_IP=${PROXY_PASS_IP}
+      - PORT=${PORT}
     container_name: nginx-reverse-proxy
     ports:
-      - 80:80
+      - 81:80
       - 443:443
+    command: ash -c "envsubst < /etc/nginx/sites-available/default_holder > /etc/nginx/sites-available/default && nginx -g 'daemon off;'"
 
 
