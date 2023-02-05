@@ -1,0 +1,14 @@
+version: '3'
+services:
+  nginx:
+    build: 
+      context: .
+      args:
+        NOSTR_DOMAIN: ${NOSTR_DOMAIN}
+        EMAIL: ${EMAIL}
+    container_name: nginx-reverse-proxy
+    ports:
+      - 80:80
+      - 443:443
+
+
