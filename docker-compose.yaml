@@ -12,7 +12,7 @@ services:
       - PORT=${PORT}
     container_name: nginx-reverse-proxy
     ports:
-      - 81:80
+      - 80:80
       - 443:443
     command: ash -c "envsubst < /etc/nginx/sites-available/default_holder > /etc/nginx/sites-available/default && nginx -g 'daemon off;'"
 
